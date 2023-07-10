@@ -9,7 +9,7 @@ pipeline {
                 sudo systemctl enable httpd
                 sudo rm -rf /var/www/html
                 sudo rm -rf /var/www
-                sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html
+                sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html 
             }
         }
         stage('Deploy') {
