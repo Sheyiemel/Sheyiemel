@@ -13,13 +13,13 @@ pipeline {
                         sh 'ssh -o StrictHostKeyChecking=no ec2-user@3.228.17.244'
                     }
                     echo 'website deploying'
-                    sudo yum install -y git
-                    sudo yum install -y httpd
-                    sudo systemctl start httpd
-                    sudo systemctl enable httpd
-                    sudo rm -rf /var/www/html
-                    sudo rm -rf /var/www
-                    sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html
+                        sh 'sudo yum install -y git'
+                        sh 'sudo yum install -y httpd'
+                        sh 'sudo systemctl start httpd'
+                        sh 'sudo systemctl enable httpd'
+                        sh 'sudo rm -rf /var/www/html'
+                        sh 'sudo rm -rf /var/www'
+                        sh 'sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
                     echo 'website deployed'
                 }
             }
