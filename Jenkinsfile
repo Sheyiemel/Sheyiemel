@@ -13,7 +13,7 @@ pipeline {
                         sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.192.58.26'
                     }
                     echo 'website deploying'
-                        sh 'sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
+                        sh 'sudo chown root:ec2-user git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
                     echo 'website deployed'
                 }
             }
