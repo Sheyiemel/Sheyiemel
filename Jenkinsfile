@@ -1,7 +1,6 @@
 pipeline {
     agent any
     stages {
-
         stage('Build') {
             steps {
                 echo 'building website'
@@ -15,20 +14,16 @@ pipeline {
                     }
                 }
             }
-            steps {
-                script {
-                    echo 'website deploying'
-    
-                    sudo yum install -y git
-                    sudo yum install -y httpd
-                    sudo systemctl start httpd
-                    sudo systemctl enable httpd
-                    sudo rm -rf /var/www/html
-                    sudo rm -rf /var/www
-                    sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html
-    
-                    echo 'website deployed'
-                }
+                        sh 'echo "website deploying"'
+
+                        sudo yum install -y git
+                        sudo yum install -y httpd
+                        sudo systemctl start httpd
+                        sudo systemctl enable httpd
+                        sudo rm -rf /var/www/html
+                        sudo rm -rf /var/www
+                        sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html
+                        echo 'website deployed'
             }
         }
 
