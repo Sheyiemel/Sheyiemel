@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     sshagent(['vmone-key']) {
-                        sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.192.58.26'
+                        sh 'ssh -o StrictHostKeyChecking=no root@44.192.58.26'
                     }
                     echo 'website deploying'
                         sh 'sudo rm -rf /var/www/html'
