@@ -13,9 +13,6 @@ pipeline {
                         sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.192.58.26'
                     }
                     echo 'website deploying'
-                        sh 'su passwd "root:1234"'
-                        sh 'yum install -y git'
-                        sh 'yum install -y httpd'
                         sh 'systemctl start httpd'
                         sh 'systemctl enable httpd'
                         sh 'rm -rf /var/www/html'
