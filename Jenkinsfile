@@ -13,7 +13,7 @@ pipeline {
                         sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.204.97.102'
                     }
                     echo 'website deploying'
-                        sh 'sudo yum install -y git -o StrictHostKeyChecking=no'
+                        sh 'sudo yum install -y git'
                         sh 'sudo yum install -y httpd'
                         sh 'sudo systemctl start httpd'
                         sh 'sudo systemctl enable httpd'
