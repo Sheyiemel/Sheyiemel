@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     sshagent(['vmone-key']) {
-                        sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.192.58.26'
+                        sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.204.97.102'
                     }
                     echo 'website deploying'
                         sh 'sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
