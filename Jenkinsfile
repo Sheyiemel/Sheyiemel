@@ -10,12 +10,16 @@ pipeline {
             steps {
                 script {
                     sshagent(['vmone-key']) {
-                        sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.204.97.102'
+                        sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.215.68.39'
                     }
                     echo 'website deploying'
-                        sh 'rm -rf /var/www/html'
-                        sh 'rm -rf /var/www'
-                        sh 'git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
+                        sh 'sudo yum install -y git'
+                        sh 'sudo yum install -y httpd'
+                        sh 'sudo systemctl start httpd'
+                        sh 'sudo systemctl enable httpd'
+                        sh 'sudo rm -rf /var/www/html'
+                        sh 'sudo rm -rf /var/www'
+                        sh 'sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
                     echo 'website deployed'
                 }
             }
