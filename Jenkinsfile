@@ -8,16 +8,21 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                        def remote = [:]
-                          remote.name = 'vmone'
-                          remote.host = '3.231.156.188'
-                          remote.user = 'ec2-user'
-                          remote.allowAnyHosts = true
-                          remote.identityfile = 'vmone-key'
+                    sshagent(credentials: ['vmone-key']) {
+                        script {
+                        def remoteHost = '3.231.156.188'
+                        def remoteUser = 'ec2-user'
+
                          // Command to install packages (replace with your package manager and package names)
                         def installCommand = 'sudo yum install -y git httpd'
-                        sshCommand remote: remote, command: installCommand
-                    
+                        sh 'sudo systemctl enable httpd'
+                        sh 'sudo systemctl start httpd'
+                        sh 'sudo rm -rf /var/www/html'
+                        sh 'sudo rm -rf /var/www'
+                        sh 'sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
+                        sshCommand remote: remoteHost, user: remoteUser, command: installCommand
+                        }
+                    }
                     echo 'deploying website'
                     echo 'website deployed'
             }
