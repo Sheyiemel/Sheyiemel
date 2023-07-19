@@ -17,7 +17,7 @@ pipeline {
                           remote.allowAnyHosts = true
                          // Command to install packages (replace with your package manager and package names)
                         def installCommand = 'sudo yum install -y git httpd'
-                        sshCommand remote: remoteHost, command: installCommand
+                        sshCommand remote: remote, command: installCommand
                         }
                     }
                     echo 'deploying website'
