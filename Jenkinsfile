@@ -10,14 +10,14 @@ pipeline {
             steps {
                 script {
                     sshagent(['vmone-key']) {
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@44.215.68.39"
-                            "sudo yum install -y git"
-                            "sudo yum install -y httpd"
-                            "sudo systemctl enable httpd"
-                            "sudo systemctl start httpd"
-                            "sudo rm -rf /var/www/html"
-                            "sudo rm -rf /var/www"
-                            "sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html"
+                        sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.215.68.39'
+                        sh 'sudo yum install -y git'
+                        sh 'sudo yum install -y httpd'
+                        sh 'sudo systemctl enable httpd'
+                        sh 'sudo systemctl start httpd'
+                        sh 'sudo rm -rf /var/www/html'
+                        sh 'sudo rm -rf /var/www'
+                        sh 'sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
                     }
                     echo 'website deployed'
                     echo 'website deployed'
