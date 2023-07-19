@@ -10,8 +10,11 @@ pipeline {
             steps {
                     sshagent(credentials: ['vmone-key']) {
                         script {
-                        def remoteHost = 'ec2-user@3.231.156.188'
-
+                        def remote = [:]
+                          remote.name = 'vmone'
+                          remote.host = '3.231.156.188'
+                          remote.user = 'ec2-user'
+                          remote.allowAnyHosts = true
                          // Command to install packages (replace with your package manager and package names)
                         def installCommand = 'sudo yum install -y git httpd'
                         sshCommand remote: remoteHost, command: installCommand
