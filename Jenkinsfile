@@ -8,6 +8,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'vmone-key', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'ec2-user')]) {
+        remote.user = userName
+        remote.identityFile = identity
                 def remote = [:]
                     remote.name = 'vmone'
                     remote.host = '3.231.156.188'
