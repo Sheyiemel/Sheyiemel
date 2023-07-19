@@ -15,11 +15,6 @@ pipeline {
 
                          // Command to install packages (replace with your package manager and package names)
                         def installCommand = 'sudo yum install -y git httpd'
-                        sh 'sudo systemctl enable httpd'
-                        sh 'sudo systemctl start httpd'
-                        sh 'sudo rm -rf /var/www/html'
-                        sh 'sudo rm -rf /var/www'
-                        sh 'sudo git clone https://github.com/Sheyiemel/Sheyiemel.git /var/www/html'
                         sshCommand remote: remoteHost, user: remoteUser, command: installCommand
                         }
                     }
