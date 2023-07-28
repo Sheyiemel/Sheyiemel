@@ -9,7 +9,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sshagent(['vmone-key']) {
+                    sshagent(['vmone-cred']) {
                         sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.203.43.242'
                     }
                     echo 'website deploying'
